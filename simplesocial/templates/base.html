@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Talk about anything</title>
+    <!-- Latest compiled and minified CSS -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Iceland&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'simplesocial/css/master.css'%}">
+
+
+  </head>
+
+
+  <body>
+<div class="Iceland">
+
+
+    <nav class="navbar  mynav" role="navigation" id="navbar">
+    			<div class="container">
+
+            <a style="font-size:30px;" class="navbar-brand mynav" href="{% url 'home' %}">TAA</a>
+
+    					<ul class="nav navbar-nav navbar-right">
+    						{% if user.is_authenticated %}
+                      <li><a style="font-size:25px;" href="{% url 'posts:create' %}" class="btn btn-simple">Post</a></li>
+                      <li><a style="font-size:25px;" href="{% url 'groups:all' %}" class="btn btn-simple">Groups</a></li>
+                      <li><a style="font-size:25px;" href="{% url 'groups:create' %}" class="btn btn-simple">Create Group</a></li>
+                      <li><a style="font-size:25px;" href="{% url 'accounts:logout' %}" class="btn btn-simple">Log out</a></li>
+    						{% else %}
+    						      <li><a style="font-size:25px;" href="{% url 'groups:all' %}"class="btn btn-simple">Groups</a></li>
+    						      <li><a style="font-size:25px;" href="{% url 'accounts:login' %}" class="btn btn-simple">Log in</a></li>
+    						      <li><a style="font-size:25px;" href="{% url 'accounts:signup' %}" class="btn btn-simple">Sign up</a></li>
+    						{% endif %}
+    					</ul>
+
+
+
+    			</div>
+    		</nav>
+        <div class="container mycontent">
+          {% block content %}
+
+          {% endblock %}
+
+        </div>
+
+
+
+<canvas id="canvas"></canvas>
+
+
+
+  </body>
+  <script src="{% static 'simplesocial/js/master.js' %}" type="text/javascript" ></script>
+</div>
+</html>
